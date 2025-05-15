@@ -2,8 +2,6 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    padding: 0;
-    margin: 0;
 }
 
 body {
@@ -46,7 +44,7 @@ header > p {
     margin-block: 30px;
 }
 
-.badges-langauges{
+.badges-langauges {
     display: flex;
     flex-wrap: wrap;
     max-width: 350px;

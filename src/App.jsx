@@ -2,6 +2,18 @@ import React from "react"
 import { languages } from "./languanges"
 
 export default function AssemblyEndgame() {
+
+    const languageElements = languages.map((lang, index) => {
+        return (
+            <div 
+                className="badge" 
+                key={index}
+                style={{backgroundColor:lang.backgroundColor, color:lang.color}}>
+                {lang.name}
+            </div>
+        )
+    })
+
     return (
         <main>
             <header>
@@ -13,16 +25,7 @@ export default function AssemblyEndgame() {
                 <p>Well done! 🎉</p>
             </section>
             <section className="badges-langauges">
-                {languages.map((lang, index) => {
-                    return (
-                        <div 
-                            className="badge" 
-                            key={index}
-                            style={{backgroundColor:lang.backgroundColor, color:lang.color}}>
-                            {lang.name}
-                        </div>
-                    )
-                })}
+                {languageElements}
             </section>
         </main>
     )
