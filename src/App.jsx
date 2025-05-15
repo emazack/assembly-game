@@ -3,11 +3,11 @@ import { languages } from "./languanges"
 
 export default function AssemblyEndgame() {
 
-    const languageElements = languages.map((lang, index) => {
+    const languageElements = languages.map((lang) => {
         return (
             <div 
                 className="badge" 
-                key={index}
+                key={lang.name}
                 style={{backgroundColor:lang.backgroundColor, color:lang.color}}>
                 {lang.name}
             </div>
