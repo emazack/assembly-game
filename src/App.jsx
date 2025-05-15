@@ -3,6 +3,16 @@ import { languages } from "./languanges"
 
 export default function AssemblyEndgame() {
 
+    const [currentWord, setCurrentWord] = React.useState("react")
+
+    const stringToArray = (myString) => {
+        let newArray = []
+        for (let letter = 0; letter < myString.length; letter++) {
+            newArray.push(myString[letter])
+        }
+        return newArray
+    }
+
     const languageElements = languages.map((lang) => {
         return (
             <div 
@@ -26,6 +36,13 @@ export default function AssemblyEndgame() {
             </section>
             <section className="badges-langauges">
                 {languageElements}
+            </section>
+            <section className="word">
+                {stringToArray(currentWord).map((letter, index) => {
+                    return (
+                        <span className="letter" key={index}>{letter}</span>
+                    )
+                })}
             </section>
         </main>
     )

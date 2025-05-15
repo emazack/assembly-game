@@ -59,3 +59,31 @@ header > p {
     font-weight: 700;
     border-radius: 3px;
 }
+
+
+.word {
+    margin-block: 36px;
+    max-width: 334px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter {
+    background-color: #323232;
+    width: 40px;
+    height: 40px;
+    margin: 0 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    border-bottom: 1px solid #F9F4DA;
+}
+
