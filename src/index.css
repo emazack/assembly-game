@@ -43,19 +43,9 @@ header > p {
     height: 59px;
     background-color: #10A95B;
     color: #F9F4DA;
-}
-
-.status {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-width: 352px;
-    height: 59px;
-    background-color: #10A95B;
-    color: #F9F4DA;
     margin-block: 30px;
 }
+
 .badges-langauges{
     display: flex;
     flex-wrap: wrap;
