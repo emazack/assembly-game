@@ -96,16 +96,18 @@ section.keyboard {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 8px;
 }
 
 section.keyboard>.letter {
     width: 40px;
     height: 40px;
-    margin: 3px;
     border-radius: 4px;
     border-width: 1px;
     font-weight: 600;
     font-size: 16px;
     line-height: 100%;
     cursor: pointer;
+    background-color: #FCBA29;
+    border: 1px solid #D7D7D7;
 }
