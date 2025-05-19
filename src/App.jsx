@@ -4,6 +4,13 @@ import { languages } from "./languanges"
 export default function AssemblyEndgame() {
 
     const [currentWord, setCurrentWord] = React.useState("react")
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    
+    const keyboard = alphabet.split("").map((letter, index) => {
+        return (
+            <button className="letter" key={index}>{letter.toUpperCase()}</button>
+        )
+    })
 
     const stringToArray = (myString) => {
         let newArray = []
@@ -24,6 +31,12 @@ export default function AssemblyEndgame() {
         )
     })
 
+    const letterElements = stringToArray(currentWord).map((letter, index) => {
+        return (
+            <span className="letter" key={index}>{letter}</span>
+        )
+    })
+
     return (
         <main>
             <header>
@@ -38,11 +51,10 @@ export default function AssemblyEndgame() {
                 {languageElements}
             </section>
             <section className="word">
-                {stringToArray(currentWord).map((letter, index) => {
-                    return (
-                        <span className="letter" key={index}>{letter}</span>
-                    )
-                })}
+                {letterElements}
+            </section>
+            <section className="keyboard">
+                {keyboard}
             </section>
         </main>
     )
