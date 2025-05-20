@@ -64,7 +64,7 @@ export default function AssemblyEndgame() {
 
     const letterElements = stringToArray(currentWord).map((letter, index) => {
         return (
-            <span className="letter" key={index}>{letter}</span>
+            <span className="letter" key={index}>{isLetterRight(letter) ? letter : ""}</span>
         )
     })
 
