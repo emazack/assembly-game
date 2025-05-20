@@ -8,8 +8,12 @@ export default function AssemblyEndgame() {
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     
     
-    const handleClickLetter = (event) => {
-        setGuessedLetters(prev => [...prev, event.target.innerText])
+    const addGuessedLetter = (letter) => {
+        setGuessedLetters(prevLetters => 
+            prevLetters.includes(letter) ? 
+                prevLetters : 
+                [...prevLetters, letter]
+        )
     }
     
     const stringToArray = (myString) => {
@@ -39,7 +43,7 @@ export default function AssemblyEndgame() {
 
     const letterElements = stringToArray(currentWord).map((letter, index) => {
         return (
-            <span onClick={handleClickLetter} className="letter" key={index}>{letter}</span>
+            <span onClick={() => addGuessedLetter(letter)} className="letter" key={index}>{letter}</span>
         )
     })
 
