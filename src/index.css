@@ -46,6 +46,7 @@ header>p {
     background-color: #10A95B;
     color: #F9F4DA;
     margin-block: 30px;
+    width: 100%;
 }
 
 .badges-langauges {
