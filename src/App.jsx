@@ -8,6 +8,9 @@ export default function AssemblyEndgame() {
     const [guessedLetters, setGuessedLetters] = useState([])
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     const rightLettersList = currentWord.split("")
+
+    const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
+    console.log(wrongGuessCount)
     
     
     const addGuessedLetter = (letter) => {
