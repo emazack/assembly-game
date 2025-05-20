@@ -112,6 +112,18 @@ section.keyboard>.letter {
     border: 1px solid #D7D7D7;
 }
 
+.keyboard>.letter.default {
+    background-color: #FCBA29;
+}
+
+.keyboard>.letter.right {
+    background-color: #10A95B;
+}
+
+.keyboard>.letter.wrong {
+    background-color: #EC5D49;
+}
+
 button.new-game {
     background-color: #11B5E5;
     border: 1px solid #D7D7D7;

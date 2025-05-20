@@ -1,12 +1,13 @@
 import {useState} from "react"
 import { languages } from "./languanges"
+import clsx from 'clsx';
 
 export default function AssemblyEndgame() {
 
     const [currentWord, setCurrentWord] = useState("react")
     const [guessedLetters, setGuessedLetters] = useState([])
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
-    console.log("guessedLetters", guessedLetters)
+    const rightLettersList = currentWord.split("")
     
     
     const addGuessedLetter = (letter) => {
@@ -14,6 +15,14 @@ export default function AssemblyEndgame() {
             return
         }
         setGuessedLetters(prevLetters => [...prevLetters, letter])
+    }
+
+    function isLetterRight(letter) {
+        if (guessedLetters.includes(letter)) {
+            return rightLettersList.includes(letter)
+        } else {
+            return undefined
+        }
     }
     
     const stringToArray = (myString) => {
@@ -24,9 +33,21 @@ export default function AssemblyEndgame() {
         return newArray
     }
     
-    const keyboardElements = alphabet.split("").map((letter, index) => {
+    const keyboardElements = alphabet.split("").map(letter => {
+        const keyboardLetterClass = clsx(
+            'default',
+            isLetterRight(letter) === true && 'right',
+            isLetterRight(letter) === false && 'wrong'
+        )
+        
         return (
-            <button onClick={() => addGuessedLetter(letter)} className="letter" key={index}>{letter.toUpperCase()}</button>
+            <button
+                className={`letter ${keyboardLetterClass}`}
+                key={letter}
+                onClick={() => addGuessedLetter(letter)}
+            >
+                {letter.toUpperCase()}
+            </button>
         )
     })
 
