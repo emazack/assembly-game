@@ -1,19 +1,19 @@
-import React from "react"
+import {useState} from "react"
 import { languages } from "./languanges"
 
 export default function AssemblyEndgame() {
 
-    const [currentWord, setCurrentWord] = React.useState("react")
+    const [currentWord, setCurrentWord] = useState("react")
     const [guessedLetters, setGuessedLetters] = useState([])
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    console.log("guessedLetters", guessedLetters)
     
     
     const addGuessedLetter = (letter) => {
-        setGuessedLetters(prevLetters => 
-            prevLetters.includes(letter) ? 
-                prevLetters : 
-                [...prevLetters, letter]
-        )
+        if (guessedLetters.includes(letter)) {
+            return
+        }
+        setGuessedLetters(prevLetters => [...prevLetters, letter])
     }
     
     const stringToArray = (myString) => {
@@ -26,7 +26,7 @@ export default function AssemblyEndgame() {
     
     const keyboardElements = alphabet.split("").map((letter, index) => {
         return (
-            <button className="letter" key={index}>{letter.toUpperCase()}</button>
+            <button onClick={() => addGuessedLetter(letter)} className="letter" key={index}>{letter.toUpperCase()}</button>
         )
     })
 
@@ -43,7 +43,7 @@ export default function AssemblyEndgame() {
 
     const letterElements = stringToArray(currentWord).map((letter, index) => {
         return (
-            <span onClick={() => addGuessedLetter(letter)} className="letter" key={index}>{letter}</span>
+            <span className="letter" key={index}>{letter}</span>
         )
     })
 
