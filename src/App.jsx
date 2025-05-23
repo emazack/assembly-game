@@ -10,7 +10,6 @@ export default function AssemblyEndgame() {
     const rightLettersList = currentWord.split("")
 
     const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
-    console.log(wrongGuessCount)
     
     
     const addGuessedLetter = (letter) => {
@@ -54,14 +53,18 @@ export default function AssemblyEndgame() {
         )
     })
 
-    const languageElements = languages.map((lang) => {
+    const languageElements = languages.map((lang, index) => {
+        const className = clsx({
+            badge: true,
+            lost: index < wrongGuessCount
+        })
         return (
-            <div 
-                className="badge" 
+            <span 
+                className={className} 
                 key={lang.name}
                 style={{backgroundColor:lang.backgroundColor, color:lang.color}}>
                 {lang.name}
-            </div>
+            </span>
         )
     })
 
