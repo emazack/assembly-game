@@ -1,4 +1,4 @@
-import {useState} from "react"
+import { useState } from "react"
 import { languages } from "./languanges"
 import clsx from 'clsx';
 
@@ -10,8 +10,10 @@ export default function AssemblyEndgame() {
     const rightLettersList = currentWord.split("")
 
     const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
-    
-    
+    const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
+    const isGameLost = wrongGuessCount >= languages.length - 1
+    const isGameOver = isGameWon || isGameLost
+
     const addGuessedLetter = (letter) => {
         if (guessedLetters.includes(letter)) {
             return
@@ -26,7 +28,7 @@ export default function AssemblyEndgame() {
             return undefined
         }
     }
-    
+
     const stringToArray = (myString) => {
         let newArray = []
         for (let letter = 0; letter < myString.length; letter++) {
@@ -34,14 +36,14 @@ export default function AssemblyEndgame() {
         }
         return newArray
     }
-    
+
     const keyboardElements = alphabet.split("").map(letter => {
         const keyboardLetterClass = clsx(
             'default',
             isLetterRight(letter) === true && 'right',
             isLetterRight(letter) === false && 'wrong'
         )
-        
+
         return (
             <button
                 className={`letter ${keyboardLetterClass}`}
@@ -59,10 +61,10 @@ export default function AssemblyEndgame() {
             lost: index < wrongGuessCount
         })
         return (
-            <span 
-                className={className} 
+            <span
+                className={className}
                 key={lang.name}
-                style={{backgroundColor:lang.backgroundColor, color:lang.color}}>
+                style={{ backgroundColor: lang.backgroundColor, color: lang.color }}>
                 {lang.name}
             </span>
         )
@@ -93,7 +95,7 @@ export default function AssemblyEndgame() {
             <section className="keyboard">
                 {keyboardElements}
             </section>
-            <button className="new-game">New Game</button>
+            {isGameOver && <button className="new-game">New Game</button>}
         </main>
     )
 }
