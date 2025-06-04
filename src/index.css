@@ -38,15 +38,23 @@ header>p {
 
 .status {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    max-width: 352px;
-    height: 59px;
-    background-color: #10A95B;
+    align-items: center;
     color: #F9F4DA;
-    margin-block: 30px;
     width: 100%;
+    max-width: 350px;
+    min-height: 60px;
+    border-radius: 4px;
+    margin-block: 30px;
+    
+}
+
+.status.won {
+    background-color: #10A95B;
+}
+
+.status.lost {
+    background-color: #BA2A2A;
 }
 
 .badges-langauges {

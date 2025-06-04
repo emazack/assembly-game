@@ -76,15 +76,41 @@ export default function AssemblyEndgame() {
         )
     })
 
+    const gameStatusClass = clsx("status", {
+        won: isGameWon,
+        lost: isGameLost
+    })
+
+    function renderGameStatus() {
+        if (!isGameOver) {
+            return null
+        }
+
+        if (isGameWon) {
+            return (
+                <>
+                    <h2>You win!</h2>
+                    <p>Well done! 🎉</p>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <h2>Game over!</h2>
+                    <p>You lose! Better start learning Assembly 😭</p>
+                </>
+            )
+        }
+    }
+
     return (
         <main>
             <header>
                 <h1>Assembly: Endgame</h1>
                 <p> Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
             </header>
-            <section className="status">
-                <p>You win!</p>
-                <p>Well done! 🎉</p>
+            <section className={gameStatusClass}>
+                {renderGameStatus()}
             </section>
             <section className="badges-langauges">
                 {languageElements}
