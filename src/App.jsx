@@ -83,7 +83,7 @@ export default function AssemblyEndgame() {
     const gameStatusClass = clsx("status", {
         won: isGameWon,
         lost: isGameLost,
-        farewell: !isGameOver && !isLastLetterRight
+        farewell: !isGameOver && !isLastLetterRight && lastDeletedLanguage
     })
 
     function renderGameStatus() {
