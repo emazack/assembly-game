@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { languages } from "./languanges"
 import clsx from 'clsx';
+import { getFarewellText } from "./utils";
 
 export default function AssemblyEndgame() {
 
@@ -13,6 +14,9 @@ export default function AssemblyEndgame() {
     const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
     const isGameLost = wrongGuessCount >= languages.length - 1
     const isGameOver = isGameWon || isGameLost
+    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+    const isLastLetterRight = rightLettersList.includes(lastGuessedLetter)
+    const lastDeletedLanguage = languages[wrongGuessCount - 1]
 
     const addGuessedLetter = (letter) => {
         if (guessedLetters.includes(letter)) {
@@ -78,12 +82,17 @@ export default function AssemblyEndgame() {
 
     const gameStatusClass = clsx("status", {
         won: isGameWon,
-        lost: isGameLost
+        lost: isGameLost,
+        farewell: !isGameOver && !isLastLetterRight
     })
 
     function renderGameStatus() {
-        if (!isGameOver) {
-            return null
+        if (!isGameOver && !isLastLetterRight && lastDeletedLanguage) {
+            return (
+                <>
+                    <p>{getFarewellText(lastDeletedLanguage.name)}</p>
+                </>
+            )
         }
 
         if (isGameWon) {
@@ -93,13 +102,15 @@ export default function AssemblyEndgame() {
                     <p>Well done! 🎉</p>
                 </>
             )
-        } else {
+        } else if (isGameLost) {
             return (
                 <>
                     <h2>Game over!</h2>
                     <p>You lose! Better start learning Assembly 😭</p>
                 </>
             )
+        } else {
+            return null
         }
     }
 
