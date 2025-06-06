@@ -6,7 +6,7 @@ import { getFarewellText, getRandomWord } from "./utils"
 export default function AssemblyEndgame() {
     // State
 
-    const [currentWord, setCurrentWord] = useState(getRandomWord())
+    const [currentWord, setCurrentWord] = useState(() => getRandomWord())
     const [guessedLetters, setGuessedLetters] = useState([])
 
     // Constants
