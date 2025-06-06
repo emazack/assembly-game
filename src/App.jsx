@@ -10,7 +10,7 @@ export default function AssemblyEndgame() {
     const [guessedLetters, setGuessedLetters] = useState([])
 
     // Constants
-    
+
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     
     // Derived state
@@ -63,6 +63,7 @@ export default function AssemblyEndgame() {
                 className={`letter ${keyboardLetterClass}`}
                 key={letter}
                 onClick={() => addGuessedLetter(letter)}
+                disabled={isGameOver}
             >
                 {letter.toUpperCase()}
             </button>
