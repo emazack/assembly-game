@@ -2,7 +2,7 @@
 
 A self-contained interactive word guessing game built using React. The goal: guess the word in under 8 attempts to stop Assembly from taking over all other programming languages.
 
-This project was created independently, without tutorials, scaffolding tools, or external guidance—completely from scratch.
+This project was created independently, just with scaffolding grafic and idea from Scrimba community
 
 ---
 
