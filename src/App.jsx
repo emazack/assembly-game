@@ -24,7 +24,7 @@ export default function AssemblyEndgame() {
     const lastDeletedLanguage = languages[wrongGuessCount - 1]
 
     // Functions
-    function resetGame() {
+    function startNewGame() {
         setCurrentWord(getRandomWord())
         setGuessedLetters([])
     }
@@ -149,7 +149,7 @@ export default function AssemblyEndgame() {
             <section className="keyboard">
                 {keyboardElements}
             </section>
-            {isGameOver && <button onClick={() => resetGame()} className="new-game">New Game</button>}
+            {isGameOver && <button onClick={() => startNewGame()} className="new-game">New Game</button>}
         </main>
     )
 }
