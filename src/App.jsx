@@ -91,10 +91,11 @@ export default function AssemblyEndgame() {
 
     const letterElements = stringToArray(currentWord).map((letter, index) => {
         const className = clsx({
+            letter: true,
             wrong: isGameLost && !guessedLetters.includes(letter)
         })
         return (
-            <span className={`letter ${className}`} key={index}>{isLetterRight(letter) || isGameLost ? letter : ""}</span>
+            <span className={className} key={index}>{isLetterRight(letter) || isGameLost ? letter : ""}</span>
         )
     })
 
