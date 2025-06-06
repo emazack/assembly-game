@@ -4,12 +4,17 @@ import clsx from 'clsx';
 import { getFarewellText } from "./utils";
 
 export default function AssemblyEndgame() {
+    // State
 
     const [currentWord, setCurrentWord] = useState("react")
     const [guessedLetters, setGuessedLetters] = useState([])
-    const alphabet = "abcdefghijklmnopqrstuvwxyz"
-    const rightLettersList = currentWord.split("")
 
+    // Constants
+    
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    
+    // Derived state
+    const rightLettersList = currentWord.split("")
     const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
     const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
     const isGameLost = wrongGuessCount >= languages.length - 1
@@ -17,6 +22,8 @@ export default function AssemblyEndgame() {
     const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
     const isLastLetterRight = rightLettersList.includes(lastGuessedLetter)
     const lastDeletedLanguage = languages[wrongGuessCount - 1]
+
+    // Functions
 
     const addGuessedLetter = (letter) => {
         if (guessedLetters.includes(letter)) {
@@ -39,7 +46,10 @@ export default function AssemblyEndgame() {
             newArray.push(myString[letter])
         }
         return newArray
+    
     }
+
+    // Render elements
 
     const keyboardElements = alphabet.split("").map(letter => {
         const keyboardLetterClass = clsx(
@@ -80,12 +90,7 @@ export default function AssemblyEndgame() {
         )
     })
 
-    const gameStatusClass = clsx("status", {
-        won: isGameWon,
-        lost: isGameLost,
-        farewell: !isGameOver && !isLastLetterRight && lastDeletedLanguage
-    })
-
+    
     function renderGameStatus() {
         if (!isGameOver && !isLastLetterRight && lastDeletedLanguage) {
             return (
@@ -94,7 +99,6 @@ export default function AssemblyEndgame() {
                 </>
             )
         }
-
         if (isGameWon) {
             return (
                 <>
@@ -113,6 +117,14 @@ export default function AssemblyEndgame() {
             return null
         }
     }
+    
+    // Class names
+
+    const gameStatusClass = clsx("status", {
+        won: isGameWon,
+        lost: isGameLost,
+        farewell: !isGameOver && !isLastLetterRight && lastDeletedLanguage
+    })
 
     return (
         <main>
