@@ -47,7 +47,7 @@ header>p {
     min-height: 60px;
     border-radius: 4px;
     margin-block: 30px;
-    
+
 }
 
 .status.won {
@@ -103,6 +103,10 @@ span.badge.lost::before {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.word>span.wrong {
+    color: #BA2A2A;
 }
 
 .letter {

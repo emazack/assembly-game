@@ -12,7 +12,7 @@ export default function AssemblyEndgame() {
     // Constants
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
-    
+
     // Derived state
     const rightLettersList = currentWord.split("")
     const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
@@ -50,7 +50,7 @@ export default function AssemblyEndgame() {
             newArray.push(myString[letter])
         }
         return newArray
-    
+
     }
 
     // Render elements
@@ -90,12 +90,15 @@ export default function AssemblyEndgame() {
     })
 
     const letterElements = stringToArray(currentWord).map((letter, index) => {
+        const className = clsx({
+            wrong: isGameLost && !guessedLetters.includes(letter)
+        })
         return (
-            <span className="letter" key={index}>{isLetterRight(letter) ? letter : ""}</span>
+            <span className={`letter ${className}`} key={index}>{isLetterRight(letter) || isGameLost ? letter : ""}</span>
         )
     })
 
-    
+
     function renderGameStatus() {
         if (!isGameOver && !isLastLetterRight && lastDeletedLanguage) {
             return (
@@ -122,7 +125,7 @@ export default function AssemblyEndgame() {
             return null
         }
     }
-    
+
     // Class names
 
     const gameStatusClass = clsx("status", {
